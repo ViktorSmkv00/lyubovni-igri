@@ -2,89 +2,83 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
-  <title>Поръчай козметика</title>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Любовни игри за двойки</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      background-color: #f5f5f5;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #fff0f5;
+      color: #333;
+      text-align: center;
     }
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    input, textarea, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #007bff;
+    header {
+      background: #ff69b4;
       color: white;
-      font-weight: bold;
+      padding: 2rem;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-weight: normal;
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+    .btn {
+      background: #ff1493;
+      color: white;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
     }
-    button:hover {
-      background-color: #0056b3;
+    .btn:hover {
+      background: #e60073;
     }
-    .success {
-      color: green;
-      margin-top: 15px;
-      font-weight: bold;
+    section {
+      padding: 2rem 1rem;
+    }
+    footer {
+      background: #ffe6f0;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <form id="contact-form">
-    <h2>Поръчка на продукт</h2>
-    
-    <label>Име</label>
-    <input type="text" name="name" required />
+  <header>
+    <h1>Любовни игри за двойки</h1>
+    <h2>Открийте нови начини да се сближите</h2>
+    <a href="game1.html" class="btn">Играй безплатно</a>
+    <a href="store.html" class="btn">Купи още игри</a>
+  </header>
 
-    <label>Имейл</label>
-    <input type="email" name="email" required />
+  <section>
+    <h3>За кого е този сайт?</h3>
+    <p>За влюбени двойки, които искат да разнообразят времето заедно – с игри, предизвикателства и забавления.</p>
+  </section>
 
-    <label>Продукт</label>
-    <input type="text" name="product" placeholder="Име на продукта" required />
+  <section>
+    <h3>Примерни въпроси</h3>
+    <p>❤️ Какво първо забеляза в мен?</p>
+    <p>💋 Целуни ме така, както на първата ни среща!</p>
+    <p>🔥 Изпълни малко романтично предизвикателство!</p>
+  </section>
 
-    <label>Съобщение / Детайли</label>
-    <textarea name="message" rows="5" placeholder="Примерно: имам чувствителна кожа, искам нещо натурално..."></textarea>
-
-    <button type="submit">Изпрати поръчката</button>
-
-    <div class="success" id="success-msg" style="display: none;">
-      ✅ Поръчката беше изпратена успешно!
-    </div>
-  </form>
-
-  <script>
-    // Инициализирай EmailJS
-    (function() {
-      emailjs.init("ZQSI77OP1cj9cB6bG"); // Твоят Public Key
-    })();
-
-    // Добави логика за изпращане
-    document.getElementById("contact-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      emailjs.sendForm("service_vhbetnb", "template_9ccd3w8", this)
-        .then(function(response) {
-          console.log("SUCCESS!", response.status, response.text);
-          document.getElementById("success-msg").style.display = "block";
-        }, function(error) {
-          console.log("FAILED...", error);
-          alert("Грешка при изпращане. Моля, опитайте отново.");
-        });
-    });
-  </script>
+  <footer>
+    Свържи се с нас в Instagram: <a href="#">@love.games</a>
+  </footer>
 
 </body>
 </html>
