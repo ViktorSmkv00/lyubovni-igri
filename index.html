@@ -1,222 +1,90 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Любовни игри за двойки</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Поръчай козметика</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
     body {
-      margin: 0;
-      font-family: 'Rubik', sans-serif;
-      background: #fff0f5;
-      color: #3d2c2e;
-      line-height: 1.6;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f5f5f5;
     }
-    header {
-      background-color: #ffb6c1;
-      padding: 1.5rem 2rem;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(255,182,193,0.4);
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #7a174b;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto 4rem auto;
-      padding: 0 1rem;
-    }
-    section {
-      background-color: #ffffff;
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      margin-bottom: 3rem;
-    }
-    h2 {
-      font-size: 2rem;
-      color: #d6336c;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0 2rem 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    ul li {
-      background: #ff69b4;
-      padding: 0.75rem 1.5rem;
-      border-radius: 9999px;
-      color: white;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(255,105,180,0.6);
-      user-select: none;
-      cursor: default;
-      transition: background-color 0.3s ease;
-    }
-    ul li:nth-child(2) {
-      background: #db4c77;
-    }
-    ul li:nth-child(3) {
-      background: #b33a66;
-    }
-    ul li:hover {
-      filter: brightness(1.1);
-    }
-    a.btn {
-      display: inline-block;
-      background-color: #d6336c;
-      color: white;
-      padding: 1rem 2.5rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin: 1.5rem auto 0 auto;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(214,51,108,0.6);
-      transition: background-color 0.3s ease;
-    }
-    a.btn:hover {
-      background-color: #a32950;
-    }
-    form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      color: #3d2c2e;
-    }
-    form input[type="text"],
-    form input[type="email"],
-    form input[type="tel"],
-    form textarea {
+    input, textarea, button {
       width: 100%;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      font-family: 'Rubik', sans-serif;
-      resize: vertical;
-      box-sizing: border-box;
     }
-    form button {
-      background-color: #d6336c;
+    button {
+      background-color: #007bff;
       color: white;
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 9999px;
-      font-weight: 700;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 1.2rem;
-      width: 100%;
-      max-width: 300px;
-      display: block;
-      margin: 0 auto;
-      box-shadow: 0 4px 8px rgba(214,51,108,0.6);
-      transition: background-color 0.3s ease;
     }
-    form button:hover {
-      background-color: #a32950;
+    button:hover {
+      background-color: #0056b3;
     }
-    #responseMessage {
-      margin-top: 1rem;
-      text-align: center;
-      font-weight: 600;
-      color: #3d2c2e;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #555;
-      background-color: #ffb6c1;
-      box-shadow: 0 -4px 8px rgba(255,182,193,0.4);
-    }
-    @media (max-width: 600px) {
-      ul {
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      a.btn {
-        width: 100%;
-        max-width: none;
-      }
-      form button {
-        max-width: 100%;
-      }
+    .success {
+      color: green;
+      margin-top: 15px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Любовни игри за двойки</h1>
-  </header>
-  <main>
-    <section id="home">
-      <h2>Изживейте нещо ново</h2>
-      <p>
-        Нашите палави и романтични игри за двойки ще разчупят рутината и ще създадат незабравими спомени. Предизвикателства, които ще ви сближат, ще ви разсмеят и ще ви разпалят.
-      </p>
-      <a href="#product" class="btn">Разгледай игрите</a>
-    </section>
-    <section id="product">
-      <h2>Любовни игри – за двойки</h2>
-      <p>
-        „Любовни игри“ е комплект от карти с палави и романтични предизвикателства, създадени за да внесат забава и страст в двойките. Играта включва три категории:
-      </p>
-      <ul>
-        <li>Романтични предизвикателства</li>
-        <li>Истини и въпроси</li>
-        <li>Палави мисии</li>
-      </ul>
-      <p>
-        Цена: <strong>24.90 лв.</strong> (включва дигитална версия и възможност за физическа игра при предварителна поръчка).
-      </p>
-      <a href="#order" class="btn">Поръчай сега</a>
-    </section>
-    <section id="order">
-      <h2>Поръчай „Любовни игри“</h2>
-      <form id="orderForm">
-        <label for="name">Име:</label>
-        <input type="text" id="name" name="name" required />
 
-        <label for="email">Имейл:</label>
-        <input type="email" id="email" name="email" required />
+  <form id="contact-form">
+    <h2>Поръчка на продукт</h2>
+    
+    <label>Име</label>
+    <input type="text" name="name" required />
 
-        <label for="phone">Телефон (по желание):</label>
-        <input type="tel" id="phone" name="phone" />
+    <label>Имейл</label>
+    <input type="email" name="email" required />
 
-        <label for="address">Адрес за доставка (по желание):</label>
-        <textarea id="address" name="address" rows="3"></textarea>
+    <label>Продукт</label>
+    <input type="text" name="product" placeholder="Име на продукта" required />
 
-        <button type="submit">Изпрати поръчката</button>
-      </form>
-      <p id="responseMessage"></p>
-    </section>
-  </main>
-  <footer>
-    © 2025 Любовни игри за двойки. Всички права запазени.
-  </footer>
+    <label>Съобщение / Детайли</label>
+    <textarea name="message" rows="5" placeholder="Примерно: имам чувствителна кожа, искам нещо натурално..."></textarea>
+
+    <button type="submit">Изпрати поръчката</button>
+
+    <div class="success" id="success-msg" style="display: none;">
+      ✅ Поръчката беше изпратена успешно!
+    </div>
+  </form>
+
   <script>
-    document.getElementById('orderForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      // Тук може да добавиш изпращане към backend или email API
-      document.getElementById('responseMessage').textContent = 'Благодарим за поръчката! Ще се свържем с вас скоро.';
-      this.reset();
+    // Инициализирай EmailJS
+    (function() {
+      emailjs.init("ZQSI77OP1cj9cB6bG"); // Твоят Public Key
+    })();
+
+    // Добави логика за изпращане
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_vhbetnb", "template_9ccd3w8", this)
+        .then(function(response) {
+          console.log("SUCCESS!", response.status, response.text);
+          document.getElementById("success-msg").style.display = "block";
+        }, function(error) {
+          console.log("FAILED...", error);
+          alert("Грешка при изпращане. Моля, опитайте отново.");
+        });
     });
   </script>
+
 </body>
 </html>
